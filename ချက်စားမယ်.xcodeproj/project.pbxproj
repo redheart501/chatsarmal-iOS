@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6721481627B0214B006E1826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6721481527B0214B006E1826 /* AppDelegate.swift */; };
+		6721481827B0214B006E1826 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6721481727B0214B006E1826 /* SceneDelegate.swift */; };
+		6721481A27B0214B006E1826 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6721481927B0214B006E1826 /* ViewController.swift */; };
+		6721481D27B0214B006E1826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6721481B27B0214B006E1826 /* Main.storyboard */; };
+		6721481F27B0214E006E1826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6721481E27B0214E006E1826 /* Assets.xcassets */; };
+		6721482227B0214E006E1826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6721482027B0214E006E1826 /* LaunchScreen.storyboard */; };
+		6734C48227B7D9E9006D95E2 /* FoodListDataModal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6734C48027B7D9E9006D95E2 /* FoodListDataModal.xcdatamodeld */; };
+		67923B1A27B2C9A7001B0DB8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 67923B1927B2C9A7001B0DB8 /* FirebaseFirestore */; };
+		67923B1C27B2C9A7001B0DB8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 67923B1B27B2C9A7001B0DB8 /* FirebaseMessaging */; };
+		67923B1E27B2CF08001B0DB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67923B1D27B2CF08001B0DB8 /* GoogleService-Info.plist */; };
+		679662F327B3FD1800E2C5E0 /* foodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679662F227B3FD1800E2C5E0 /* foodDetailView.swift */; };
+		67DECF5827B172D200EDD903 /* MyanmarWaso.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4427B172D200EDD903 /* MyanmarWaso.ttf */; };
+		67DECF5927B172D200EDD903 /* MyanmarChatuLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4527B172D200EDD903 /* MyanmarChatuLight.ttf */; };
+		67DECF5A27B172D200EDD903 /* MyanmarPhiksel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4627B172D200EDD903 /* MyanmarPhiksel.ttf */; };
+		67DECF5B27B172D200EDD903 /* MyanmarPauklay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4727B172D200EDD903 /* MyanmarPauklay.ttf */; };
+		67DECF5C27B172D200EDD903 /* MyanmarKuttar.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4827B172D200EDD903 /* MyanmarKuttar.ttf */; };
+		67DECF5D27B172D200EDD903 /* MyanmarThuriya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4927B172D200EDD903 /* MyanmarThuriya.ttf */; };
+		67DECF5E27B172D200EDD903 /* MyanmarSanpya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4A27B172D200EDD903 /* MyanmarSanpya.ttf */; };
+		67DECF5F27B172D200EDD903 /* MyanmarYinmar.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4B27B172D200EDD903 /* MyanmarYinmar.ttf */; };
+		67DECF6027B172D200EDD903 /* MyanmarPhikselSmooth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4C27B172D200EDD903 /* MyanmarPhikselSmooth.ttf */; };
+		67DECF6127B172D200EDD903 /* MyanmarTagu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4D27B172D200EDD903 /* MyanmarTagu.ttf */; };
+		67DECF6227B172D200EDD903 /* MyanmarKhyay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4E27B172D200EDD903 /* MyanmarKhyay.ttf */; };
+		67DECF6327B172D200EDD903 /* MyanmarSabae.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF4F27B172D200EDD903 /* MyanmarSabae.ttf */; };
+		67DECF6427B172D200EDD903 /* MyanmarPhetsot.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5027B172D200EDD903 /* MyanmarPhetsot.ttf */; };
+		67DECF6527B172D200EDD903 /* MyanmarAngoun.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5127B172D200EDD903 /* MyanmarAngoun.ttf */; };
+		67DECF6627B172D200EDD903 /* MyanmarGantgaw.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5227B172D200EDD903 /* MyanmarGantgaw.ttf */; };
+		67DECF6727B172D200EDD903 /* MyanmarNayone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5327B172D200EDD903 /* MyanmarNayone.ttf */; };
+		67DECF6827B172D200EDD903 /* MyanmarNjaun.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5427B172D200EDD903 /* MyanmarNjaun.ttf */; };
+		67DECF6927B172D200EDD903 /* MyanmarChatu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5527B172D200EDD903 /* MyanmarChatu.ttf */; };
+		67DECF6A27B172D200EDD903 /* MyanmarPonenyet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5627B172D200EDD903 /* MyanmarPonenyet.ttf */; };
+		67DECF6B27B172D200EDD903 /* MyanmarSagar.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DECF5727B172D200EDD903 /* MyanmarSagar.ttf */; };
+		67DECF6E27B1780400EDD903 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 67DECF6D27B1780400EDD903 /* Alamofire */; };
+		67DECF7127B1799B00EDD903 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 67DECF7027B1799B00EDD903 /* AlamofireImage */; };
+		67DECF7427B179C600EDD903 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 67DECF7327B179C600EDD903 /* ObjectMapper */; };
+		67E21B5527B579C500B2948D /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 67E21B5427B579C500B2948D /* NVActivityIndicatorView */; };
+		67E21B5727B579C500B2948D /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 67E21B5627B579C500B2948D /* NVActivityIndicatorViewExtended */; };
+		67E73BCE27B7A17D00A224EE /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E73BCD27B7A17C00A224EE /* CollectionViewController.swift */; };
+		67EA4A5027C9307700ECAF6E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA4A4F27C9307700ECAF6E /* AboutViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6721481227B0214B006E1826 /* ချက်စားမယ်.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ချက်စားမယ်.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6721481527B0214B006E1826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6721481727B0214B006E1826 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6721481927B0214B006E1826 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6721481C27B0214B006E1826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6721481E27B0214E006E1826 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6721482127B0214E006E1826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6721482327B0214E006E1826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6734C48127B7D9E9006D95E2 /* FoodListDataModal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodListDataModal.xcdatamodel; sourceTree = "<group>"; };
+		67923B1D27B2CF08001B0DB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		679662F227B3FD1800E2C5E0 /* foodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = foodDetailView.swift; sourceTree = "<group>"; };
+		67CAC4FA27C9CE5D0087F0EC /* ချက်စားမယ်.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ချက်စားမယ်.entitlements"; sourceTree = "<group>"; };
+		67DECF4427B172D200EDD903 /* MyanmarWaso.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarWaso.ttf; sourceTree = "<group>"; };
+		67DECF4527B172D200EDD903 /* MyanmarChatuLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarChatuLight.ttf; sourceTree = "<group>"; };
+		67DECF4627B172D200EDD903 /* MyanmarPhiksel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarPhiksel.ttf; sourceTree = "<group>"; };
+		67DECF4727B172D200EDD903 /* MyanmarPauklay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarPauklay.ttf; sourceTree = "<group>"; };
+		67DECF4827B172D200EDD903 /* MyanmarKuttar.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarKuttar.ttf; sourceTree = "<group>"; };
+		67DECF4927B172D200EDD903 /* MyanmarThuriya.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarThuriya.ttf; sourceTree = "<group>"; };
+		67DECF4A27B172D200EDD903 /* MyanmarSanpya.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarSanpya.ttf; sourceTree = "<group>"; };
+		67DECF4B27B172D200EDD903 /* MyanmarYinmar.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarYinmar.ttf; sourceTree = "<group>"; };
+		67DECF4C27B172D200EDD903 /* MyanmarPhikselSmooth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarPhikselSmooth.ttf; sourceTree = "<group>"; };
+		67DECF4D27B172D200EDD903 /* MyanmarTagu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarTagu.ttf; sourceTree = "<group>"; };
+		67DECF4E27B172D200EDD903 /* MyanmarKhyay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarKhyay.ttf; sourceTree = "<group>"; };
+		67DECF4F27B172D200EDD903 /* MyanmarSabae.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarSabae.ttf; sourceTree = "<group>"; };
+		67DECF5027B172D200EDD903 /* MyanmarPhetsot.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarPhetsot.ttf; sourceTree = "<group>"; };
+		67DECF5127B172D200EDD903 /* MyanmarAngoun.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarAngoun.ttf; sourceTree = "<group>"; };
+		67DECF5227B172D200EDD903 /* MyanmarGantgaw.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarGantgaw.ttf; sourceTree = "<group>"; };
+		67DECF5327B172D200EDD903 /* MyanmarNayone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarNayone.ttf; sourceTree = "<group>"; };
+		67DECF5427B172D200EDD903 /* MyanmarNjaun.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarNjaun.ttf; sourceTree = "<group>"; };
+		67DECF5527B172D200EDD903 /* MyanmarChatu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarChatu.ttf; sourceTree = "<group>"; };
+		67DECF5627B172D200EDD903 /* MyanmarPonenyet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarPonenyet.ttf; sourceTree = "<group>"; };
+		67DECF5727B172D200EDD903 /* MyanmarSagar.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyanmarSagar.ttf; sourceTree = "<group>"; };
+		67E73BCD27B7A17C00A224EE /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		67EA4A4F27C9307700ECAF6E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6721480F27B0214B006E1826 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67E21B5727B579C500B2948D /* NVActivityIndicatorViewExtended in Frameworks */,
+				67DECF7427B179C600EDD903 /* ObjectMapper in Frameworks */,
+				67923B1A27B2C9A7001B0DB8 /* FirebaseFirestore in Frameworks */,
+				67E21B5527B579C500B2948D /* NVActivityIndicatorView in Frameworks */,
+				67923B1C27B2C9A7001B0DB8 /* FirebaseMessaging in Frameworks */,
+				67DECF6E27B1780400EDD903 /* Alamofire in Frameworks */,
+				67DECF7127B1799B00EDD903 /* AlamofireImage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6721480927B0214B006E1826 = {
+			isa = PBXGroup;
+			children = (
+				6734C48027B7D9E9006D95E2 /* FoodListDataModal.xcdatamodeld */,
+				6721481427B0214B006E1826 /* ချက်စားမယ် */,
+				6721481327B0214B006E1826 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6721481327B0214B006E1826 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6721481227B0214B006E1826 /* ချက်စားမယ်.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6721481427B0214B006E1826 /* ချက်စားမယ် */ = {
+			isa = PBXGroup;
+			children = (
+				67CAC4FA27C9CE5D0087F0EC /* ချက်စားမယ်.entitlements */,
+				67923B1D27B2CF08001B0DB8 /* GoogleService-Info.plist */,
+				6721481527B0214B006E1826 /* AppDelegate.swift */,
+				6721481727B0214B006E1826 /* SceneDelegate.swift */,
+				6721481927B0214B006E1826 /* ViewController.swift */,
+				679662F227B3FD1800E2C5E0 /* foodDetailView.swift */,
+				67E73BCD27B7A17C00A224EE /* CollectionViewController.swift */,
+				67EA4A4F27C9307700ECAF6E /* AboutViewController.swift */,
+				6721481B27B0214B006E1826 /* Main.storyboard */,
+				6721481E27B0214E006E1826 /* Assets.xcassets */,
+				6721482027B0214E006E1826 /* LaunchScreen.storyboard */,
+				6721482327B0214E006E1826 /* Info.plist */,
+				67DECF4327B172D200EDD903 /* KhmerType */,
+			);
+			path = "ချက်စားမယ်";
+			sourceTree = "<group>";
+		};
+		67DECF4327B172D200EDD903 /* KhmerType */ = {
+			isa = PBXGroup;
+			children = (
+				67DECF4427B172D200EDD903 /* MyanmarWaso.ttf */,
+				67DECF4527B172D200EDD903 /* MyanmarChatuLight.ttf */,
+				67DECF4627B172D200EDD903 /* MyanmarPhiksel.ttf */,
+				67DECF4727B172D200EDD903 /* MyanmarPauklay.ttf */,
+				67DECF4827B172D200EDD903 /* MyanmarKuttar.ttf */,
+				67DECF4927B172D200EDD903 /* MyanmarThuriya.ttf */,
+				67DECF4A27B172D200EDD903 /* MyanmarSanpya.ttf */,
+				67DECF4B27B172D200EDD903 /* MyanmarYinmar.ttf */,
+				67DECF4C27B172D200EDD903 /* MyanmarPhikselSmooth.ttf */,
+				67DECF4D27B172D200EDD903 /* MyanmarTagu.ttf */,
+				67DECF4E27B172D200EDD903 /* MyanmarKhyay.ttf */,
+				67DECF4F27B172D200EDD903 /* MyanmarSabae.ttf */,
+				67DECF5027B172D200EDD903 /* MyanmarPhetsot.ttf */,
+				67DECF5127B172D200EDD903 /* MyanmarAngoun.ttf */,
+				67DECF5227B172D200EDD903 /* MyanmarGantgaw.ttf */,
+				67DECF5327B172D200EDD903 /* MyanmarNayone.ttf */,
+				67DECF5427B172D200EDD903 /* MyanmarNjaun.ttf */,
+				67DECF5527B172D200EDD903 /* MyanmarChatu.ttf */,
+				67DECF5627B172D200EDD903 /* MyanmarPonenyet.ttf */,
+				67DECF5727B172D200EDD903 /* MyanmarSagar.ttf */,
+			);
+			path = KhmerType;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6721481127B0214B006E1826 /* ချက်စားမယ် */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6721482627B0214E006E1826 /* Build configuration list for PBXNativeTarget "ချက်စားမယ်" */;
+			buildPhases = (
+				6721480E27B0214B006E1826 /* Sources */,
+				6721480F27B0214B006E1826 /* Frameworks */,
+				6721481027B0214B006E1826 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ချက်စားမယ်";
+			packageProductDependencies = (
+				67DECF6D27B1780400EDD903 /* Alamofire */,
+				67DECF7027B1799B00EDD903 /* AlamofireImage */,
+				67DECF7327B179C600EDD903 /* ObjectMapper */,
+				67923B1927B2C9A7001B0DB8 /* FirebaseFirestore */,
+				67923B1B27B2C9A7001B0DB8 /* FirebaseMessaging */,
+				67E21B5427B579C500B2948D /* NVActivityIndicatorView */,
+				67E21B5627B579C500B2948D /* NVActivityIndicatorViewExtended */,
+			);
+			productName = "ချက်စားမယ်";
+			productReference = 6721481227B0214B006E1826 /* ချက်စားမယ်.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6721480A27B0214B006E1826 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					6721481127B0214B006E1826 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = 6721480D27B0214B006E1826 /* Build configuration list for PBXProject "ချက်စားမယ်" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6721480927B0214B006E1826;
+			packageReferences = (
+				67DECF6C27B1780400EDD903 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				67DECF6F27B1799B00EDD903 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				67DECF7227B179C600EDD903 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				67923B1827B2C9A6001B0DB8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				67E21B5327B579C400B2948D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+			);
+			productRefGroup = 6721481327B0214B006E1826 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6721481127B0214B006E1826 /* ချက်စားမယ် */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6721481027B0214B006E1826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6721482227B0214E006E1826 /* LaunchScreen.storyboard in Resources */,
+				67DECF6227B172D200EDD903 /* MyanmarKhyay.ttf in Resources */,
+				67DECF5A27B172D200EDD903 /* MyanmarPhiksel.ttf in Resources */,
+				67DECF6B27B172D200EDD903 /* MyanmarSagar.ttf in Resources */,
+				67DECF5D27B172D200EDD903 /* MyanmarThuriya.ttf in Resources */,
+				67DECF6127B172D200EDD903 /* MyanmarTagu.ttf in Resources */,
+				67DECF6027B172D200EDD903 /* MyanmarPhikselSmooth.ttf in Resources */,
+				67923B1E27B2CF08001B0DB8 /* GoogleService-Info.plist in Resources */,
+				67DECF5F27B172D200EDD903 /* MyanmarYinmar.ttf in Resources */,
+				6721481F27B0214E006E1826 /* Assets.xcassets in Resources */,
+				67DECF6327B172D200EDD903 /* MyanmarSabae.ttf in Resources */,
+				67DECF5E27B172D200EDD903 /* MyanmarSanpya.ttf in Resources */,
+				67DECF6427B172D200EDD903 /* MyanmarPhetsot.ttf in Resources */,
+				67DECF6527B172D200EDD903 /* MyanmarAngoun.ttf in Resources */,
+				67DECF5827B172D200EDD903 /* MyanmarWaso.ttf in Resources */,
+				67DECF6727B172D200EDD903 /* MyanmarNayone.ttf in Resources */,
+				67DECF6A27B172D200EDD903 /* MyanmarPonenyet.ttf in Resources */,
+				6721481D27B0214B006E1826 /* Main.storyboard in Resources */,
+				67DECF6627B172D200EDD903 /* MyanmarGantgaw.ttf in Resources */,
+				67DECF5C27B172D200EDD903 /* MyanmarKuttar.ttf in Resources */,
+				67DECF6827B172D200EDD903 /* MyanmarNjaun.ttf in Resources */,
+				67DECF5B27B172D200EDD903 /* MyanmarPauklay.ttf in Resources */,
+				67DECF5927B172D200EDD903 /* MyanmarChatuLight.ttf in Resources */,
+				67DECF6927B172D200EDD903 /* MyanmarChatu.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6721480E27B0214B006E1826 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6721481A27B0214B006E1826 /* ViewController.swift in Sources */,
+				679662F327B3FD1800E2C5E0 /* foodDetailView.swift in Sources */,
+				6721481627B0214B006E1826 /* AppDelegate.swift in Sources */,
+				67EA4A5027C9307700ECAF6E /* AboutViewController.swift in Sources */,
+				6721481827B0214B006E1826 /* SceneDelegate.swift in Sources */,
+				67E73BCE27B7A17D00A224EE /* CollectionViewController.swift in Sources */,
+				6734C48227B7D9E9006D95E2 /* FoodListDataModal.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6721481B27B0214B006E1826 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6721481C27B0214B006E1826 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6721482027B0214E006E1826 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6721482127B0214E006E1826 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6721482427B0214E006E1826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6721482527B0214E006E1826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6721482727B0214E006E1826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ချက်စားမယ်/ချက်စားမယ်.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 825UU98G27;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ချက်စားမယ်/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyh.chatsarmal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Chat Sar Mal Development";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6721482827B0214E006E1826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ချက်စားမယ်/ချက်စားမယ်.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 825UU98G27;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ချက်စားမယ်/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyh.chatsarmal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Chat Sar Mal - App Store";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6721480D27B0214B006E1826 /* Build configuration list for PBXProject "ချက်စားမယ်" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6721482427B0214E006E1826 /* Debug */,
+				6721482527B0214E006E1826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6721482627B0214E006E1826 /* Build configuration list for PBXNativeTarget "ချက်စားမယ်" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6721482727B0214E006E1826 /* Debug */,
+				6721482827B0214E006E1826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67923B1827B2C9A6001B0DB8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		67DECF6C27B1780400EDD903 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		67DECF6F27B1799B00EDD903 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		67DECF7227B179C600EDD903 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		67E21B5327B579C400B2948D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67923B1927B2C9A7001B0DB8 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67923B1827B2C9A6001B0DB8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		67923B1B27B2C9A7001B0DB8 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67923B1827B2C9A6001B0DB8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		67DECF6D27B1780400EDD903 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67DECF6C27B1780400EDD903 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		67DECF7027B1799B00EDD903 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67DECF6F27B1799B00EDD903 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		67DECF7327B179C600EDD903 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67DECF7227B179C600EDD903 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		67E21B5427B579C500B2948D /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67E21B5327B579C400B2948D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		67E21B5627B579C500B2948D /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67E21B5327B579C400B2948D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6734C48027B7D9E9006D95E2 /* FoodListDataModal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6734C48127B7D9E9006D95E2 /* FoodListDataModal.xcdatamodel */,
+			);
+			currentVersion = 6734C48127B7D9E9006D95E2 /* FoodListDataModal.xcdatamodel */;
+			path = FoodListDataModal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6721480A27B0214B006E1826 /* Project object */;
+}

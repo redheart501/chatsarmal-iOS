@@ -12,25 +12,35 @@ import NVActivityIndicatorView
 class CollectionViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblHeader: UILabel!
+    
+    @IBOutlet weak var btnToggle: UIButton!
     
     let refreshControl = UIRefreshControl()
     var count = 0
+    var foodType = ""
+    var toggleInCollection = false
     var dataArray = [String : Any]() { didSet {
-       let object = self.dataArray["pork"] as? [Any]
+       let object = self.dataArray[foodType] as? [Any]
         count = object?.count ?? 0
+        
     }}
     var activityIndicatorView: NVActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+//        tableView.addSubview(refreshControl)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-         
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        self.tableView.isHidden = false
+        self.collectionView.isHidden = true
 //        let frame = CGRect(x: self.view.frame.size.width/2 - 20, y: self.view.frame.size.height/2 - 20, width: 40, height: 40)
 //        activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.gray, padding: 0)
 //        self.view.addSubview(self.activityIndicatorView)
@@ -40,7 +50,9 @@ class CollectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.lblHeader.text = self.dataArray["name"] as? String
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.navigationBar.isHidden = true
+        self.collectionView.reloadData()
+        self.tableView.reloadData()
     }
     
     @objc func refresh(_ sender: AnyObject) {
@@ -50,6 +62,21 @@ class CollectionViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func clickToggle(_ sender: Any) {
+        self.toggleInCollection.toggle()
+        if toggleInCollection {
+            self.btnToggle.setImage(UIImage(systemName: "square.grid.2x2.fill"), for: .normal)
+            self.tableView.isHidden = true
+            self.collectionView.isHidden = false
+            self.collectionView.reloadData()
+        }else{
+            self.btnToggle.setImage(UIImage(systemName: "list.dash"), for: .normal)
+            self.tableView.isHidden = false
+            self.collectionView.isHidden = true
+            self.tableView.reloadData()
+        }
+      
+    }
 }
 
 extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
@@ -62,10 +89,10 @@ extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bodyCell", for: indexPath) as? bodyCell else {
             return UITableViewCell()
         }
-        let data = self.dataArray["pork"] as? [Any]
+        let data = self.dataArray[foodType] as? [Any]
        
         let object = data?[indexPath.row] as! [String:Any]
-        cell.gradientView.setGradientBackground(colorTop: .white, colorBottom: .black)
+        
         cell.imgView?.af_setImage(withURL: URL(string: object["image"] as! String)!,placeholderImage: nil)
         cell.imgView.layer.cornerRadius = 12
         cell.lblTitle.text = object["name"] as? String
@@ -73,13 +100,93 @@ extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
+   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "foodDetailView") as! foodDetailView
-        let data = self.dataArray["pork"] as? [Any]
+        let data = self.dataArray[foodType] as? [Any]
        
         let object = data?[indexPath.row] as! [String:Any]
         vc.array = object
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.alpha = 0
+//
+//        UIView.animate(
+//            withDuration: 0.5,
+//            delay: 0.05 * Double(indexPath.row),
+//            animations: {
+//                cell.alpha = 1
+//        })
+//    }
+    
+}
+
+extension CollectionViewController : UICollectionViewDataSource,UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? collectionCell else {
+            return UICollectionViewCell()
+        }
+        let data = self.dataArray[foodType] as? [Any]
+       
+        let object = data?[indexPath.row] as! [String:Any]
+        
+        cell.imgView?.af_setImage(withURL: URL(string: object["image"] as! String)!,placeholderImage: nil)
+        cell.imgView.layer.cornerRadius = 12
+        cell.lblTitle.text = object["name"] as? String
+//
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "foodDetailView") as! foodDetailView
+        let data = self.dataArray[foodType] as? [Any]
+       
+        let object = data?[indexPath.row] as! [String:Any]
+        vc.array = object
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width/3.5, height: 190)
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        cell.alpha = 0
+//
+//        UIView.animate(
+//            withDuration: 0.5,
+//            delay: 0.05 * Double(indexPath.row),
+//            animations: {
+//                cell.alpha = 1
+//        })
+//    }
+}
+
+class collectionCell:UICollectionViewCell{
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var shadowView: UIView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+       
+        addShadow()
+//        gradientView.setGradientBackground(colorTop: .white, colorBottom: .black)
+    }
+    
+    private func addShadow() {
+        shadowView.layer.cornerRadius = 12
+//        shadowView.layer.masksToBounds = true
+        shadowView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        shadowView.layer.shadowOpacity = 1
+        shadowView.layer.shadowOffset = CGSize.zero
+        shadowView.layer.shadowRadius = 2
+    }
 }
