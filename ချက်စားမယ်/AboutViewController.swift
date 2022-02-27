@@ -11,4 +11,11 @@ import UIKit
 class AboutViewController : UIViewController{
     
     
+    @IBOutlet weak var lblVersion: UILabel!
+    
+    override func viewDidLoad() {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            self.lblVersion.text = version
+        }
+    }
 }

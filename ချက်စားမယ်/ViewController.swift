@@ -102,6 +102,7 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource{
         let object = self.dataArray[indexPath.row] as! [String:Any]
         vc.foodType = (object["foodType"] as? String)!
         vc.dataArray = object
+        vc.isFromMain = true
 //        vc.modalPresentationStyle = .fullScreen
 //        self.present(vc, animated: true, completion: nil)
 

@@ -8,6 +8,7 @@
 import UIKit
 import AlamofireImage
 import NVActivityIndicatorView
+import CoreData
 
 class CollectionViewController: UIViewController {
     
@@ -15,18 +16,32 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblHeader: UILabel!
     
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnToggle: UIButton!
     
     let refreshControl = UIRefreshControl()
     var count = 0
     var foodType = ""
     var toggleInCollection = false
+    var isFromMain = false
     var dataArray = [String : Any]() { didSet {
        let object = self.dataArray[foodType] as? [Any]
         count = object?.count ?? 0
         
     }}
+    var result = [NSManagedObject](){
+        didSet {
+            self.collectionView.reloadData()
+            self.tableView.reloadData()
+        }
+    }
     var activityIndicatorView: NVActivityIndicatorView!
+    
+    private lazy var persistentContainer: NSPersistentContainer = {
+        NSPersistentContainer(name: "FoodListDataModal")
+    }()
+    
+    deinit{NotificationCenter.default.removeObserver(self)}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +61,53 @@ class CollectionViewController: UIViewController {
 //        self.view.addSubview(self.activityIndicatorView)
         
 //        activityIndicatorView.stopAnimating()
+        persistentContainer.loadPersistentStores { [weak self] persistentStoreDescription, error in
+            if let error = error {
+                print("Unable to Add Persistent Store")
+                print("\(error), \(error.localizedDescription)")
+                
+            } else {
+                self?.fetchFav()
+            }
+        }
+        NotificationCenter.default.addObserver(forName: .NSManagedObjectContextDidSave,
+                                               object: persistentContainer.viewContext,
+                                               queue: .main) { [weak self] _ in
+            self?.fetchFav()
+        }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        self.lblHeader.text = self.dataArray["name"] as? String
+        self.fetchFav()
+        self.lblHeader.text = isFromMain ? self.dataArray["name"] as? String : "Favourites"
+        btnBack.isHidden = isFromMain ? false : true
         self.navigationController?.navigationBar.isHidden = true
         self.collectionView.reloadData()
         self.tableView.reloadData()
     }
+    
+    
+    private func fetchFav() {
+        print(persistentContainer.viewContext)
+        // Create Fetch Request
+        let fetchRequest: NSFetchRequest<Receipe> = Receipe.fetchRequest()
+        
+        // Perform Fetch Request
+        persistentContainer.viewContext.perform {
+            do {
+                // Execute Fetch Request
+//                let result = try fetchRequest.execute()
+//                print(result,result.count)
+                self.result = try self.persistentContainer.viewContext.fetch(fetchRequest)
+             
+            } catch {
+                print("Unable to Execute Fetch Request, \(error)")
+            }
+        }
+    }
+    
+   
     
     @objc func refresh(_ sender: AnyObject) {
        
@@ -81,7 +135,7 @@ class CollectionViewController: UIViewController {
 
 extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count
+        return isFromMain ? count : self.result.count
     }
     
    
@@ -89,13 +143,22 @@ extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bodyCell", for: indexPath) as? bodyCell else {
             return UITableViewCell()
         }
-        let data = self.dataArray[foodType] as? [Any]
-       
-        let object = data?[indexPath.row] as! [String:Any]
         
-        cell.imgView?.af_setImage(withURL: URL(string: object["image"] as! String)!,placeholderImage: nil)
-        cell.imgView.layer.cornerRadius = 12
-        cell.lblTitle.text = object["name"] as? String
+        if isFromMain{
+            let data = self.dataArray[foodType] as? [Any]
+           
+            let object = data?[indexPath.row] as! [String:Any]
+            
+            cell.imgView?.af_setImage(withURL: URL(string: object["image"] as! String)!,placeholderImage: nil)
+            cell.imgView.layer.cornerRadius = 12
+            cell.lblTitle.text = object["name"] as? String
+        }else{
+            let data = self.result[indexPath.row]
+            
+            cell.imgView?.af_setImage(withURL: URL(string: data.value(forKey: "image") as? String ?? "")!,placeholderImage: nil)
+            cell.imgView.layer.cornerRadius = 12
+            cell.lblTitle.text = data.value(forKey: "name") as? String ?? ""
+        }
 //
         return cell
     }
@@ -103,12 +166,7 @@ extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "foodDetailView") as! foodDetailView
-        let data = self.dataArray[foodType] as? [Any]
-       
-        let object = data?[indexPath.row] as! [String:Any]
-        vc.array = object
-        self.navigationController?.pushViewController(vc, animated: true)
+        presentFoodDetailView(indexPath.row)
 
     }
     
@@ -127,32 +185,53 @@ extension CollectionViewController : UITableViewDelegate,UITableViewDataSource{
 
 extension CollectionViewController : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return count
+        return isFromMain ? count : self.result.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? collectionCell else {
             return UICollectionViewCell()
         }
-        let data = self.dataArray[foodType] as? [Any]
-       
-        let object = data?[indexPath.row] as! [String:Any]
-        
-        cell.imgView?.af_setImage(withURL: URL(string: object["image"] as! String)!,placeholderImage: nil)
-        cell.imgView.layer.cornerRadius = 12
-        cell.lblTitle.text = object["name"] as? String
+        if isFromMain{
+            let data = self.dataArray[foodType] as? [Any]
+           
+            let object = data?[indexPath.row] as! [String:Any]
+            
+            cell.imgView?.af_setImage(withURL: URL(string: object["image"] as! String)!,placeholderImage: nil)
+            cell.imgView.layer.cornerRadius = 12
+            cell.lblTitle.text = object["name"] as? String
+        }else{
+            let data = self.result[indexPath.row]
+            
+            cell.imgView?.af_setImage(withURL: URL(string: data.value(forKey: "image") as? String ?? "")!,placeholderImage: nil)
+            cell.imgView.layer.cornerRadius = 12
+            cell.lblTitle.text = data.value(forKey: "name") as? String ?? ""
+        }
 //
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "foodDetailView") as! foodDetailView
-        let data = self.dataArray[foodType] as? [Any]
-       
-        let object = data?[indexPath.row] as! [String:Any]
-        vc.array = object
-        self.navigationController?.pushViewController(vc, animated: true)
+        presentFoodDetailView(indexPath.row)
     }
-    
+    func presentFoodDetailView(_ row : Int){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "foodDetailView") as! foodDetailView
+       
+        if isFromMain{
+            let data = self.dataArray[foodType] as? [Any]
+            let object = data?[row] as! [String:Any]
+            vc.array = object
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let image = self.result[row].value(forKey: "image")
+            let name = self.result[row].value(forKey: "name")
+            let desc = self.result[row].value(forKey: "desc")
+            let favData = ["name": name,
+                           "desc" : desc,
+                           "image":image]
+            vc.array =  favData as [String : Any]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width/3.5, height: 190)
     }
